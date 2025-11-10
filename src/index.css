@@ -5,9 +5,28 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Fix for iOS Safari background-attachment: fixed issue */
+@supports (-webkit-overflow-scrolling: touch) {
+  .home::before, .about-me::before, .projects::before, .experience::before, .contact::before {
+    position: absolute;
+    background-attachment: scroll;
+  }
 }

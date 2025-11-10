@@ -1,38 +1,95 @@
 .App {
   text-align: center;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 80px;
+  top: 0;
+  left: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Global background fix for all pages */
+.home, .about-me, .projects, .experience, .contact {
+  position: relative;
+  z-index: 1;
+}
+
+/* Create pseudo-elements for fixed backgrounds */
+.home::before, .about-me::before, .projects::before, .experience::before, .contact::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Individual background images */
+.home::before {
+  background-image: url('./assets/hero.gif');
+}
+
+.about-me::before {
+  background-image: url('./assets/garden.gif');
+}
+
+.projects::before {
+  background-image: url('./assets/room.gif');
+}
+
+.experience::before {
+  background-image: url('./assets/dining_hall.gif');
+}
+
+.contact::before {
+  background-image: url('./assets/hero.gif');
+}
+
+/* Navigation arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
   color: white;
+  font-size: 2em;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.App-link {
-  color: #61dafb;
+.left-arrow {
+  left: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right-arrow {
+  right: 20px;
+}
+
+.nav-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: #fff;
 }

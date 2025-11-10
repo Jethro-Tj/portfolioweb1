@@ -1,0 +1,360 @@
+.experience {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+  padding: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.experience::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.experience-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: white;
+}
+
+.experience-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  padding-bottom: 1rem;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.experience-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+
+.tabs-container {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.tab-content {
+  padding: 3rem;
+  color: white;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline-content {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.period {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+}
+
+.company {
+  color: #667eea;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.achievements h5 {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.achievements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.achievements li {
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.achievements li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.education-grid, .certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.education-card, .certification-card {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.education-card:hover, .certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.education-header, .cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.education-header h3, .cert-header h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+  flex: 1;
+}
+
+.institution, .cert-issuer {
+  color: #667eea;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.gpa, .cert-date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.relevant-courses h5 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.courses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.course-tag {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.cert-status {
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.cert-status.completed {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+}
+
+.cert-status.in-progress {
+  background: linear-gradient(45deg, #FF9800, #f57c00);
+  color: white;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab-content {
+    padding: 2rem;
+  }
+  
+  .timeline {
+    padding-left: 1rem;
+  }
+  
+  .timeline-content {
+    padding: 1.5rem;
+  }
+  
+  .timeline-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .education-grid, .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+}
